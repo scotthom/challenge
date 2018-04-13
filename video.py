@@ -2,16 +2,16 @@ import numpy as np
 import cv2
 from datetime import datetime
 
-habit_cascade = cv2.CascadeClassifier('Cascades/Solomon/miccal-cascade-30stages.xml')
+habit_cascade = cv2.CascadeClassifier('cascades/cascade.xml')
 
-cap = cv2.VideoCapture('video/miccal_drone.mp4')
+cap = cv2.VideoCapture('../video/miccal_drone.mp4')
 fps = cap.get(cv2.CAP_PROP_FPS)
 
 # intialize output file
 time = datetime.now().strftime("%d-%m-%Y_%I-%M-%S_%p")
 output_name = "./output/output_video_" + time + ".txt"
 output_f = open(output_name, "a")
-output_f.write("video/miccal_drone.mp4\n")
+output_f.write("../video/miccal_drone.mp4\n")
 
 # Only read 6 seconds for testing purposes
 
