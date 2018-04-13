@@ -24,6 +24,8 @@ args = vars(ap.parse_args())
 
 # grab the paths to the images,
 imagePaths = list(paths.list_images(args["images"]))
+images_num = len(imagePaths)
+number_total_detect = 0
 
 # initialize the list of images
 images = []
@@ -41,9 +43,10 @@ for i, imagePath in enumerate(imagePaths):
         detector = cv2.CascadeClassifier(args["cascade"])
         rects = detector.detectMultiScale(image, scaleFactor=1.30, minNeighbors=1, minSize=(24, 24))
         detect_num = len(rects)
-        
+
         if detect_num > 0:
             imagePath_list.append(imagePath)
+            number_total_detect += 1
 
         image_info = ""
 
@@ -87,6 +90,13 @@ output_f = open(output_name, "a")
 
 # initialize string to print all image information
 image_full = ""
+
+#Percentage of frames with identification(s) to total frames
+abspath_img_dir = os.path.abspath(args["images"])
+percent_iden_info = os.path.abspath(args["images"]) + " percentage of identifications: " + str(int(number_total_detect/images_num * 100)) + "%\n"
+print(percent_iden_info)   
+
+output_f.write(percent_iden_info)
 
 #print all information
 for i in imagePath_list_sorted:

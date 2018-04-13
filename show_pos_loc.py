@@ -15,6 +15,9 @@ args = vars(ap.parse_args())
 file_r = open(args["output"], "r")
 image_list = file_r.readlines()
 
+# Delete Percentage of Identificaitons Information
+del image_list[0]
+
 pos_image_list = []
 
 for image_info in image_list:

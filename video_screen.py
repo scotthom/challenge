@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture()
+cap = cv2.VideoCapture("../video/miccal_drone.mp4")
 
 habit_cascade = cv2.CascadeClassifier('cascades/cascade.xml')
 
