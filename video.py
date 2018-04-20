@@ -2,6 +2,7 @@ import argparse
 from datetime import datetime
 import numpy as np
 import cv2
+import os
 
 #Parse Arguments
 
@@ -18,8 +19,8 @@ habit_cascade = cv2.CascadeClassifier(args["cascade"])
 cap = cv2.VideoCapture(args["video"])
 
 #Frames per second (FPS)
-fps = cap.get(cv2.CAP_PROP_FPS)
-fps_new = (fps/int(args["fps"]))
+fps = round(cap.get(cv2.CAP_PROP_FPS), 0)
+fps_new = (int(args["fps"]))
 
 #Total Number of frames
 total_frames_actual = cap.get(cv2.CAP_PROP_FRAME_COUNT)
@@ -34,9 +35,7 @@ print("Total Actual Frames: " + str(total_frames_actual))
 # intialize output file
 time = datetime.now().strftime("%d-%m-%Y_%I-%M-%S_%p")
 output_name = "./output/output_video_" + time + ".txt"
-output_f = open(output_name, "a")
-output_f.write("../video/miccal_drone.mp4\n")
-
+output_f = open(output_name, "w")
 # Only read 6 seconds for testing purposes
 
 frame_num = 0
@@ -61,6 +60,10 @@ while(frame_num < 100):
             minute = int((frame_num/fps)/60)
             second =  int((frame_num/fps)%60)
             fractional_second = str(frame_num - 3600*minute - 60*second)
+
+            if second < 10:
+                second = "0" + str(second)
+
             time_stamp = str(minute) + ":" + str(second) + " " + "(" + str(fractional_second) + "/" + str(int(fps)) + ") " 
             
             image_info = ""
@@ -70,6 +73,7 @@ while(frame_num < 100):
             for (j ,(x, y, w, h)) in enumerate(habit):
                 
                 obj_coordinate = str(x) + " " + str(y) + " " + str(w) + " " + str(h)
+                
                 if detect_num == 1:
                     image_info += time_stamp
                     image_info += str(frame_num) + " "
@@ -97,7 +101,15 @@ while(frame_num < 100):
                         image_info += obj_coordinate + "\n" 
 
             output_f.write(image_info)
-percent_iden = "Percentage of Identifications: " + str(int((total_num_iden/total_frames) * 100)) + "%\n"
-print(percent_iden)
+output_f.close()
+
+abspath = os.path.abspath("../video/miccal_drone.mp4")
+percent_iden = abspath + " Percentage of Identifications: " + str(int((total_num_iden/total_frames) * 100)) + "%\n"
+file_name = "output\\" + "output_video_" + time + ".txt"
+file_without_header = open(file_name, "r+")
+content = file_without_header.read()
+file_without_header.seek(0,0)
+file_without_header.write(percent_iden.rstrip('\r\n') + "\n" + content)
+
 cap.release()
 cv2.destroyAllWindows()

@@ -32,8 +32,11 @@ print(
 Press 'n' for next image or 'q' to quit"""
 )
 
+# initialize index to go through images
+i = 0
+
 # Show images with positive objects highlighted
-for i in range(len(pos_image_list)):
+while i in range(len(pos_image_list)):
     img_name = pos_image_list[i][0]
     img_num_obj = int(pos_image_list[i][1])
 
@@ -51,11 +54,17 @@ for i in range(len(pos_image_list)):
     k = cv2.waitKey(0) & 0xff
 
     if k == ord('n'):
-        pass
-      
+        cv2.destroyAllWindows()
     elif k == ord('q'):
-        cv2.destroyAllWindows
+        cv2.destroyAllWindows()
         break
+    elif k == ord('p'):
+        i -= 2
+        cv2.destroyAllWindows()
+    if i > len(pos_image_list):
+        break
+
+    i += 1
         
         
 
