@@ -10,7 +10,7 @@ class HaarCascade(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
         container = tk.Frame(self)
 
-        container.grid(row=0)
+        container.pack(fill="none", expand = True)
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
@@ -24,6 +24,8 @@ class HaarCascade(tk.Tk):
 
             #Store frames in a dictionary
             self.frames[F] = frame
+
+            frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(home)
 
@@ -45,6 +47,10 @@ class home(tk.Frame):
 
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=1)
+
+        windowTitle = tk.Label(self, text="<Add uncropped Miconia photo here>")
+        windowTitle.grid(row=2)
+        windowTitle.config(font=("Courier, 16"))
 
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=3)
@@ -96,7 +102,7 @@ class resizeImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Resize Image", font=LARGE_FONT)
-        label.pack()
+        label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
@@ -108,7 +114,7 @@ class positiveFile(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Make Positive File", font=LARGE_FONT)
-        label.pack()
+        label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
@@ -120,7 +126,7 @@ class train(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Train", font=LARGE_FONT)
-        label.pack()
+        label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
@@ -132,7 +138,7 @@ class identifyImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Identify Image", font=LARGE_FONT)
-        label.pack()
+        label.pack(pady=10,padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
