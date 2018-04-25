@@ -51,7 +51,7 @@ class home(tk.Frame):
         image_resize = ImageTk.PhotoImage(resize_image)
         label = tk.Label(image=image_resize)
         label.image = image_resize
-        label.grid(blank_row=2)
+        label.grid(row=2)
 
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=3)
@@ -103,11 +103,11 @@ class resizeImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Resize Image", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.grid(row=0)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
-        button1.pack()
+        button1.grid(row=1)
 
 
 class positiveFile(tk.Frame):
@@ -115,11 +115,11 @@ class positiveFile(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Make Positive File", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.grid(row=0)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
-        button1.pack()
+        button1.grid(row=1)
 
 
 class train(tk.Frame):
@@ -127,11 +127,11 @@ class train(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Train", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.grid(row=0)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
-        button1.pack()
+        button1.grid(ResourceWarning=1)
 
 
 class identifyImage(tk.Frame):
@@ -139,11 +139,11 @@ class identifyImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Identify Image", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.grid(row=0)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
-        button1.pack()
+        button1.gird(row=1)
 
         
 
