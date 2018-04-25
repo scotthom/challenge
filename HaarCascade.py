@@ -10,7 +10,7 @@ class HaarCascade(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
         container = tk.Frame(self)
 
-        container.pack(fill="none", expand = True)
+        container.grid(row=0)
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
