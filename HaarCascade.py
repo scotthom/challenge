@@ -44,6 +44,7 @@ class home(tk.Frame):
         windowTitle.grid(row=0)
         windowTitle.config(font=("Courier, 24"))
 
+
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=1)
 
