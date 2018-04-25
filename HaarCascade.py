@@ -47,9 +47,11 @@ class home(tk.Frame):
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=1)
 
-        windowTitle = tk.Label(self, text="<Add uncropped Miconia photo here>")
-        windowTitle.grid(row=2)
-        windowTitle.config(font=("Courier, 16"))
+        resize_image = Image.open("./images/resize.jpg")
+        image_resize = ImageTk.PhotoImage(resize_image)
+        label = tk.Label(image=image_resize)
+        label.image = image_resize
+        label.grid(blank_row=2)
 
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=3)
