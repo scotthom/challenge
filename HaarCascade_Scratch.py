@@ -10,12 +10,6 @@ class HaarCascade(tk.Tk):
 
         self.frames = {}
 
-        #frame = Window1(container, self)
-
-        #self.frames[Window1] = frame
-
-        #frame.grid(row=0, column=0, sticky="nsew")
-
         for F in (Window1, Window2):
             frame = F(container, self)
             self.frames[F] = frame

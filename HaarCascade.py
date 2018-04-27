@@ -45,7 +45,6 @@ class home(tk.Frame):
         windowTitle.grid(row=0)
         windowTitle.config(font=("Courier, 24"))
 
-
         blank_row = tk.Label(self, text="")
         blank_row.grid(row=1)
 
@@ -103,11 +102,16 @@ class resizeImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Resize Image", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.pack(side="top", pady=10,padx=10)
+
+        photo = ImageTk.PhotoImage(Image.open("images/resize.jpg"))
+        label = tk.Label(self, image = photo)
+        label.image = photo
+        label.pack(side="top", fill="both", expand=True)
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
-        button1.pack()
+        button1.pack(side="top")
 
 
 class positiveFile(tk.Frame):
