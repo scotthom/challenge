@@ -42,67 +42,67 @@ class home(tk.Frame):
         tk.Frame.__init__(self,parent)
 
         windowTitle = tk.Label(self, text="Home")
-        windowTitle.grid(row=0)
+        windowTitle.pack(side="top")
         windowTitle.config(font=("Courier, 24"))
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=1)
+        blank_row.pack(side="top")
 
         windowTitle = tk.Label(self, text="<Add uncropped Miconia photo here>")
-        windowTitle.grid(row=2)
+        windowTitle.pack(side="top")
         windowTitle.config(font=("Courier, 16"))
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=3)
+        blank_row.pack(side="top")
 
         resize_button = tk.Button(self, text="Resize Image", command=lambda:  controller.show_frame(resizeImage))
-        resize_button.grid(row=4)
+        resize_button.pack(side="top")
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=5)
+        blank_row.pack(side="top")
 
         windowTitle = tk.Label(self, text="<Add cropped Miconia photo here>")
-        windowTitle.grid(row=6)
+        windowTitle.pack(side="top")
         windowTitle.config(font=("Courier, 16"))
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=7)
+        blank_row.pack(side="top")
 
         resize_button = tk.Button(self, text="Positive Image", command=lambda:  controller.show_frame(positiveFile))
-        resize_button.grid(row=8)
+        resize_button.pack(side="top")
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=9)
+        blank_row.pack(side="top")
 
         windowTitle = tk.Label(self, text="<Add train Haar Cascade here>")
-        windowTitle.grid(row=10)
+        windowTitle.pack(side="top")
         windowTitle.config(font=("Courier, 16"))
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=11)
+        blank_row.pack(side="top")
 
         resize_button = tk.Button(self, text="Train", command=lambda:  controller.show_frame(train))
-        resize_button.grid(row=12)
+        resize_button.pack(side="top")
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=13)
+        blank_row.pack(side="top")
 
         windowTitle = tk.Label(self, text="<Add identify Miconia here>")
-        windowTitle.grid(row=14)
+        windowTitle.pack(side="top")
         windowTitle.config(font=("Courier, 16"))
 
         blank_row = tk.Label(self, text="")
-        blank_row.grid(row=15)
+        blank_row.pack(side="top")
 
         resize_button = tk.Button(self, text="Identify Image", command=lambda:  controller.show_frame(identifyImage))
-        resize_button.grid(row=16)
+        resize_button.pack(side="top")
 
 class resizeImage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Resize Image", font=LARGE_FONT)
-        label.pack(side="top", pady=10,padx=10)
+        label.pack(side="top")
 
         photo = ImageTk.PhotoImage(Image.open("images/resize.jpg"))
         label = tk.Label(self, image = photo)
@@ -131,7 +131,7 @@ class train(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Train", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.pack()
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
@@ -143,7 +143,7 @@ class identifyImage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, text="Identify Image", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label.pack()
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
