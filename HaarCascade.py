@@ -8,10 +8,11 @@ class HaarCascade(tk.Tk):
     def __init__(self, *args, **kwargs):
         
         tk.Tk.__init__(self, *args, **kwargs)
-        container = tk.Frame(self)
 
+        container = tk.Frame(self)
         container.pack(fill="none", expand = True)
 
+        #configure row and column growth with weight
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
@@ -21,7 +22,7 @@ class HaarCascade(tk.Tk):
 
             #initialize each page in container
             frame = F(container, self)
-
+            
             #Store frames in a dictionary
             self.frames[F] = frame
 
