@@ -105,14 +105,13 @@ class resizeImage(tk.Frame):
         label.pack(side="top")
 
         photo = ImageTk.PhotoImage(Image.open("images/resize.jpg"))
-        label = tk.Label(self, image = photo)
-        label.image = photo
-        label.pack(side="top", fill="both", expand=True)
+        resize_photo = tk.Label(self, image = photo)
+        resize_photo.image = photo
+        resize_photo.pack(side="top", pady="20")
 
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
         button1.pack(side="top")
-
 
 class positiveFile(tk.Frame):
 
@@ -125,7 +124,6 @@ class positiveFile(tk.Frame):
                             command=lambda: controller.show_frame(home))
         button1.pack()
 
-
 class train(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -137,7 +135,6 @@ class train(tk.Frame):
                             command=lambda: controller.show_frame(home))
         button1.pack()
 
-
 class identifyImage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -148,8 +145,6 @@ class identifyImage(tk.Frame):
         button1 = tk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(home))
         button1.pack()
-
-        
 
 app = HaarCascade()
 app.wm_geometry("500x600")
